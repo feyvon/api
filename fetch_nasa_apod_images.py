@@ -1,14 +1,17 @@
 import requests
 import argparse
+import os
+from dotenv import load_dotenv
 from main import download_image
 from main import get_extension
 
 
 def main():
+    load_dotenv()
     parser = argparse.ArgumentParser(description="Скачивает изображения Nasa APOD")
     parser.add_argument('--count', help="Кол-во изображений", default=30)
     args = parser.parse_args()
-    api_key = "ukhBYrlzWV8nvsfCVtio3sSpIDFBcqPGViOidtY5"
+    api_key = os.getenv('NASA_API_KEY')
     url = "https://api.nasa.gov/planetary/apod"
     params = {
         "api_key": api_key,

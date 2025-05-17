@@ -1,10 +1,13 @@
 import requests
 import datetime
+import os
+from dotenv import load_dotenv
 from main import download_image
 
 
 def main():
-    api_key = "ukhBYrlzWV8nvsfCVtio3sSpIDFBcqPGViOidtY5"
+    load_dotenv()
+    api_key = os.getenv('NASA_API_KEY')
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {
         "api_key": api_key
